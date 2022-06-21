@@ -27,10 +27,10 @@ export default function ProductCard() {
       </CardContent>
       <CardActions>
         <Button variant="contained" size="small">
-          Share
+          BUY
         </Button>
         <Button variant="contained" size="small">
-          Learn More
+          RATE{" "}
         </Button>
       </CardActions>
     </Card>

@@ -27,8 +27,11 @@ import { useForm } from "react-hook-form";
 import { Alert } from "@mui/material";
 
 export default function App() {
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const { register, handleSubmit, reset } = useForm();
+  const onSubmit = (data) => {
+    console.log(data);
+    reset();
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
