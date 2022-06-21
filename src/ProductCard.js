@@ -6,8 +6,12 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Grid } from "@mui/material";
+import RateButton from "./RateButton";
 
 export default function ProductCard() {
+  function handleBuyButton() {
+    console.log("buy Button clicked");
+  }
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
@@ -24,13 +28,11 @@ export default function ProductCard() {
           Lizards are a widespread group of squamate reptiles, with over 6,000
           species, ranging across all continents except Antarctica
         </Typography>
+        {/* <RateButton /> */}
       </CardContent>
       <CardActions>
-        <Button variant="contained" size="small">
+        <Button onClick={handleBuyButton} variant="contained" size="small">
           BUY
-        </Button>
-        <Button variant="contained" size="small">
-          RATE{" "}
         </Button>
       </CardActions>
     </Card>
