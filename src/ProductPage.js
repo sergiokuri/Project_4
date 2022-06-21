@@ -36,11 +36,9 @@ function ProductPage({ items, delItem }) {
   ];
   return (
     <main>
-      <ul>
-        {plants.map((plant) => (
-          <ProductCard {...plant} />
-        ))}
-      </ul>
+      {plants.map((plant) => (
+        <ProductCard {...plant} />
+      ))}
     </main>
   );
 }
