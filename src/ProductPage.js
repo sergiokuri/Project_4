@@ -1,5 +1,6 @@
 import React from "react";
 import ProductCard from "./ProductCard";
+import { Grid } from "@mui/material";
 // import ListingCard from "./ListingCard";
 function ProductPage({ items, delItem }) {
   const plants = [
@@ -35,13 +36,21 @@ function ProductPage({ items, delItem }) {
     },
   ];
   return (
-    <main>
-      <ul>
+    <>
+      <Grid
+        container
+        spacing={2}
+        direction="row"
+        justify="flex-start"
+        alignItems="flex-start"
+      >
         {plants.map((plant) => (
-          <ProductCard {...plant} />
+          <Grid item xs={12} sm={6} md={3}>
+            <ProductCard {...plant} />
+          </Grid>
         ))}
-      </ul>
-    </main>
+      </Grid>
+    </>
   );
 }
 export default ProductPage;
