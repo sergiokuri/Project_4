@@ -13,8 +13,9 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
-const pages = ["Products", "Categories", "SignUp"];
-const settings = ["Home", "NewUserForm", "ShoppingCart"]; //logout
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+const pages = ["Products", "ShoppingCart"];
+const settings = ["Home", "SignUp", "Logout", "Login"]; //logout
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -31,7 +32,8 @@ const ResponsiveAppBar = () => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
+  const handleCloseUserMenu = (e) => {
+    console.log(e.target);
     setAnchorElUser(null);
   };
 
@@ -55,11 +57,10 @@ const ResponsiveAppBar = () => {
               textDecoration: "none",
             }}
           >
-            LOGO
+            PLANTSTORE
           </Typography>
-
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
+            <ShoppingCartIcon
               size="large"
               aria-label="account of current user"
               aria-controls="menu-appbar"
@@ -68,7 +69,7 @@ const ResponsiveAppBar = () => {
               color="inherit"
             >
               <MenuIcon />
-            </IconButton>
+            </ShoppingCartIcon>
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -88,18 +89,24 @@ const ResponsiveAppBar = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem
+                  component={Link}
+                  to={`/${page}`}
+                  key={page}
+                  onClick={handleCloseNavMenu}
+                >
+                  {/* <Typography textAlign="center">{page}</Typography> */}
+                  {page}
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+
           <Typography
             variant="h5"
             noWrap
-            component="a"
-            href=""
+            component={Link}
+            to="/Home"
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -111,7 +118,7 @@ const ResponsiveAppBar = () => {
               textDecoration: "none",
             }}
           >
-            LOGO
+            PLANTSTORE
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
@@ -124,7 +131,6 @@ const ResponsiveAppBar = () => {
               </Button>
             ))}
           </Box>
-
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -148,9 +154,14 @@ const ResponsiveAppBar = () => {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">
-                    <Link to={`/${setting}`}>{setting}</Link>
+                <MenuItem
+                  component={Link}
+                  to={`/${setting}`}
+                  key={setting}
+                  onClick={handleCloseUserMenu}
+                >
+                  <Typography value={setting} textAlign="center">
+                    {setting}
                   </Typography>
                 </MenuItem>
               ))}
