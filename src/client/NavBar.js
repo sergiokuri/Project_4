@@ -32,6 +32,7 @@ const ResponsiveAppBar = () => {
   };
 
   const handleCloseNavMenu = () => {
+    console.log("Clicking on");
     setAnchorElNav(null);
   };
 
@@ -48,12 +49,14 @@ const ResponsiveAppBar = () => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <ShoppingCartIcon
+            sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
+          />
           <Typography
             variant="h6"
             noWrap
-            component="a"
-            href="/"
+            component={Link}
+            to="/Home"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -131,6 +134,8 @@ const ResponsiveAppBar = () => {
             {pages.map((page) => (
               <Button
                 key={page}
+                component={Link}
+                to={`/${page}`}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
