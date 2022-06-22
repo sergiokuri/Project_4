@@ -7,6 +7,9 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
 export default function ProductCard({ name, image, description }) {
+  function handleBuyButton() {
+    console.log("buy button clicked");
+  }
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia component="img" height="300" image={image} alt="plant" />
@@ -19,12 +22,12 @@ export default function ProductCard({ name, image, description }) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button variant="contained" size="small">
+        <Button onClick={handleBuyButton} variant="contained" size="small">
           BUY
         </Button>
-        <Button variant="contained" size="small">
+        {/* <Button variant="contained" size="small">
           RATE{" "}
-        </Button>
+        </Button> */}
       </CardActions>
     </Card>
   );
